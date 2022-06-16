@@ -1,0 +1,13 @@
+#例題練習
+
+
+
+----------
+1. 如果有隱藏的比較關係 -> 用整數(int)且從0開始
+
+2. 如果要用別隻.py -> 要先引用(除了built-in function)
+import .py名 / 照抄.
+例如.
+import random / random.randint(0, 2)
+import a.b.c / a.b.c.z()
+
