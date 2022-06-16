@@ -1,0 +1,109 @@
+#例題練習
+1. 剪刀石頭布
+import random
+
+my = int(input("o.剪刀 1.石頭 2.布: "))
+com = random.randint(0, 2)
+trans = ["剪刀", "石頭", "布"]
+print("我的:", trans[my])
+print("電腦:", trans[com])
+
+if my == (com + 1) % 3:
+    print("Win")
+elif com == (my + 1) % 3:
+    print("Lose")
+else:
+    print("Even")
+
+2. 棒打老虎雞吃蟲
+import random
+
+my = int(input("o.棒子 1.老虎 2.雞 3.蟲: "))
+com = random.randint(0, 3)
+trans = ["棒子", "老虎", "雞", "蟲"]
+print("我的:", trans[my])
+print("電腦:", trans[com])
+
+if my == (com + 1) % 4: #我是電腦的下一個就會輸
+    print("Lose")
+elif com == (com - 1) % 4: #我是電腦的上一個就是贏
+    print("Win")
+else:
+    print("Even")
+    
+3. 星號三角形(靠右)
+# original
+layer = 10
+i = 0
+while i < layer:
+    print(" " * (layer-i-1) + "*" * (i+1))
+    i = i + 1
+    
+# neat
+left, right = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    left_count = layer - i - 1
+    right_count = i + 1
+    print(left * left_count + right * right_count)
+    i = i + 1
+    
+# reverse
+left, right = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    left_count = i
+    right_count = layer - i
+    print(left * left_count + right * right_count)
+    i = i + 1
+----------
+1. 如果有隱藏的比較關係 -> 用整數(int)且從0開始
+
+2. 如果要用別隻.py -> 要先引用(除了built-in function)
+import .py名 / 照抄.
+例如:
+import random / random.randint(0, 2)
+import a.b.c / a.b.c.z()
+
+3. 清單(list)
+list1 = ["xxx", "xxx", "xxx"]
+           0      1      2
+查詢(key-value)
+key:0,1,2  value:"xxx","xxx","xxx"
+查詢對象[key]
+
+4. 有循環關係
+13 / 3 = 4...2
+a. 商: 25 // 3 -> 4
+b. 餘: 25 %(mod) 3 -> 2
+
+0 % 3 -> 0
+1 % 3 -> 1
+2 % 3 -> 2
+3 % 3 -> 0
+4 % 3 -> 1
+5 % 3 -> 2
+6 % 3 -> 0
+
+0~n: % (n+1)
+
+5. 迴圈(重複)
+a. 初始化記錄器: i = 0
+b. 判斷要不要做: i < 10
+c. 增加記錄器: i = i + 1
+
+i = 0
+while i < 10:
+    print("XXX")
+    i = i + 1
+    
+* 養成好習慣，不管如何盡量i從0開始
+a. 1...10 -> i = 0, i < 10, i = i + 1, print(i + 1)
+b. 10...1 -> i = 0, i < 10, i = i + 1, print(10 - i)
+c. 1 3...19 -> i = 0, i < 10, i = i + 1, print(2 * i + 1)
+
+6. 乘法
+a. "Hello" * 3 -> "HelloHelloHello"
+b. [10, 20] * 2 -> [10, 20, 10, 20]
