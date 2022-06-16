@@ -49,13 +49,33 @@ while i < layer:
     print(left * left_count + right * right_count)
     i = i + 1
     
-# reverse
+# 倒三角
 left, right = " ", "*"
 layer = 10
 i = 0
 while i < layer:
     left_count = i
     right_count = layer - i
+    print(left * left_count + right * right_count)
+    i = i + 1
+
+# 等腰
+side, center = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    side_count = layer - i
+    center_count = 2 * i + 1
+    print(side * side_count + center * center_count + side * side_count)
+    i = i + 1
+    
+# 平行四邊形
+left, right = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    left_count = layer - i - 1
+    right_count = 3
     print(left * left_count + right * right_count)
     i = i + 1
 ----------
