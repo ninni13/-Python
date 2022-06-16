@@ -1,0 +1,72 @@
+# 本地環境
+1. 翻譯器: Python 3.x(3.10) * windows不要直接在官網下載 *
+search 'python 3.10' * windows記得裝64-bit *
+2. 輔助工具: PyCharm / VSCode / Anaconda(不建議)
+PyCharm - download community version(free)
+
+# 線上環境
+repl.it -> create new -> template 選擇'Python'
+----------
+1. 註解 (加強可讀性)
+# 我是註解 (#後的空格為非強制的，只是排版整齊)
+(一般環境) 選取一串程式碼 + ctrl / command + "/"
+(PyCharm) 選取一串程式碼 + ctrl / command + "#"
+
+2. 功能
+print(參數) / 功能名稱() * 不管小括號內有無參數，小括號不可少 *
+input(提示字串) * 輸出結果會是str *
+
+3. 命名規則
+a. 英文起始 abc = 5(O) / 1ab = 5(X)
+
+4. 型態(type)
+a. 整數(integer / int): 2
+b. 小數(float): 2.0
+c. 字串(string / str): "Hello" / 'Hello'
+
+5. 型態轉換
+a. int()   轉成整數
+b. float() 轉成小數
+c. str()   轉成字串
+
+6. = 等號
+a. 5 == 3 + 2 左右是否相等
+b. x = 3      
+
+7. + 加號
+a. 1 + 2 -> 3
+b. "ab" + "cd" -> "abcd"
+c. 1 + "ab" -> error
+
+8. 縮排 -> : + Tab(不要用空格) * 一定要排整齊 *
+
+9. 如果...否則
+if bmi > 25:
+  print("OOO")
+else:
+  print("XXX")
+
+10. 如果...否則如果...否則 (由上而下的單選題)
+if bmi > 25:
+  print("OOO")
+elif bmi > 18:
+  print("XXX")
+else:
+  print("OOXX")
+----------
+# 例題練習
+1. 計算BMI
+# calculate BMI: 體重 / 身高(m) ^ 2
+weight = float(input("請輸入體重: "))
+height = float(input("請輸入身高: "))
+bmi = weight / (height / 100) ** 2
+print("體重是: " + str(weight))
+print("身高是: " + str(height))
+print("BMI是: " + str(bmi))
+
+if bmi > 25:
+    print("過重")
+elif bmi > 18:
+    print("正常")
+else:
+    print("過輕")
