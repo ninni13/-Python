@@ -60,23 +60,29 @@ while i < layer:
     i = i + 1
 
 # 等腰
-side, center = " ", "*"
+left, mid, right = " ", "*", " "
 layer = 10
 i = 0
 while i < layer:
-    side_count = layer - i
-    center_count = 2 * i + 1
-    print(side * side_count + center * center_count + side * side_count)
+    lcount = layer - i - 1
+    mcount = 2 * i + 1
+    rcount = lcount
+    print(left * lcount +
+          mid * mcount + 
+          right * rcount)
     i = i + 1
     
 # 平行四邊形
-left, right = " ", "*"
+left, mid, right = " ", "*", " "
 layer = 10
 i = 0
 while i < layer:
-    left_count = layer - i - 1
-    right_count = 3
-    print(left * left_count + right * right_count)
+    lcount = layer - i - 1
+    mcount = 2
+    rcount = i
+    print(left * lcount +
+          mid * mcount + 
+          right * rcount)
     i = i + 1
 ----------
 1. 如果有隱藏的比較關係 -> 用整數(int)且從0開始
