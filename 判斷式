@@ -56,6 +56,8 @@ b. "ab" + "cd" -> "abcd"
 c. 1 + "ab" -> error
 
 8. 縮排 -> : + Tab(不要用空格) * 一定要排整齊 *
+a. 多行縮排 -> 選取 + ctrl / command + Tab
+b. 反縮排 -> 選取 + shift + Tab
 
 9. 如果...否則
 if bmi > 25:
