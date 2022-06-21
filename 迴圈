@@ -95,6 +95,24 @@ while i < len(s):
     ans = ans + chr(new)
     i = i + 1
 print(ans)
+
+4. 估計圓面積(蒙地卡羅法)
+import random
+total = 10000
+incircle = 0
+i = 0
+while i < total:
+    x = random.uniform(-1, 1)  # 產生1~-1之間的隨機小數 
+    y = random.uniform(-1, 1)
+    if x ** 2 + y ** 2 <= 1:
+        # print("in")
+        incircle = incircle + 1
+    else:
+        # print("out")
+        pass  # 什麼都不做
+    i = i + 1
+ratio = incircle / total
+print("面積: ", 4 * ratio)
 ----------
 1. 迴圈(重複)
 a. 初始化記錄器: i = 0
