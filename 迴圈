@@ -1,0 +1,54 @@
+# 例題練習
+1. 星號三角形(靠右)
+# original
+layer = 10
+i = 0
+while i < layer:
+    print(" " * (layer-i-1) + "*" * (i+1))
+    i = i + 1
+    
+# neat
+left, right = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    left_count = layer - i - 1
+    right_count = i + 1
+    print(left * left_count + right * right_count)
+    i = i + 1
+    
+# 倒三角
+left, right = " ", "*"
+layer = 10
+i = 0
+while i < layer:
+    left_count = i
+    right_count = layer - i
+    print(left * left_count + right * right_count)
+    i = i + 1
+
+# 等腰
+left, mid, right = " ", "*", " "
+layer = 10
+i = 0
+while i < layer:
+    lcount = layer - i - 1
+    mcount = 2 * i + 1
+    rcount = lcount
+    print(left * lcount +
+          mid * mcount + 
+          right * rcount)
+    i = i + 1
+    
+# 平行四邊形
+left, mid, right = " ", "*", " "
+layer = 10
+i = 0
+while i < layer:
+    lcount = layer - i - 1
+    mcount = 2
+    rcount = i
+    print(left * lcount +
+          mid * mcount + 
+          right * rcount)
+    i = i + 1
