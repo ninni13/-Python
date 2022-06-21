@@ -113,6 +113,14 @@ while i < total:
     i = i + 1
 ratio = incircle / total
 print("面積: ", 4 * ratio)
+
+5. 輸入密碼直到對為止(不確定次數)
+correct = "1234"
+while True:
+    e = input("Enter: ")
+    if e == correct:
+        print("Finish")
+        break
 ----------
 1. 迴圈(重複)
 a. 初始化記錄器: i = 0
@@ -138,3 +146,9 @@ len(字串、串列名稱)
 
 4. 查詢
 字串、串列名稱[索引值]
+
+5. 布林值(Boolean)
+只有兩種值 True & False
+
+6. break
+在任何時間點結束迴圈
