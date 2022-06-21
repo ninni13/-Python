@@ -52,3 +52,71 @@ while i < layer:
           mid * mcount + 
           right * rcount)
     i = i + 1
+
+2. 確認座標位置
+i, x, y =0, 0, 0
+instructions = "UDLRUUUR"
+while i < len(instructions):
+    if instructions[i] == "U":
+        y = y + 1
+    elif instructions[i] == "D":
+        y = y - 1
+    elif instructions[i] == "R":
+        x = x + 1
+    elif instructions[i] == "L":
+        x = x - 1
+    i = i + 1
+    print(x, y)
+
+3. 除法(取到小數後10位)
+i, a, b = 0, 2, 7
+digit = 10
+ans = "0."
+
+while i < digit:
+    a10 = a * 10
+    ans = ans + str(a10 // b)
+    a = a10 % b
+    i = i + 1
+print(ans)
+
+3. 將字母往後推移兩位(凱薩密碼)
+s = "abcdz"
+secrect = 2
+ans = ""
+i = 0
+
+while i < len(s):
+    n = ord(s[i])
+    #ord("a") = 97
+    #chr(97) = "a"
+    n = n - ord("a")
+    new = (n + secrect) % 26 + ord("a")
+    ans = ans + chr(new)
+    i = i + 1
+print(ans)
+----------
+1. 迴圈(重複)
+a. 初始化記錄器: i = 0
+b. 判斷要不要做: i < 10
+c. 增加記錄器: i = i + 1
+
+i = 0
+while i < 10:
+    print("XXX")
+    i = i + 1
+    
+* 養成好習慣，不管如何盡量i從0開始
+a. 1...10 -> i = 0, i < 10, i = i + 1, print(i + 1)
+b. 10...1 -> i = 0, i < 10, i = i + 1, print(10 - i)
+c. 1 3...19 -> i = 0, i < 10, i = i + 1, print(2 * i + 1)
+
+2. 乘法
+a. "Hello" * 3 -> "HelloHelloHello"
+b. [10, 20] * 2 -> [10, 20, 10, 20]
+
+3. 長度
+len(字串、串列名稱)
+
+4. 查詢
+字串、串列名稱[索引值]
