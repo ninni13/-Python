@@ -72,11 +72,23 @@ while i < len(instructions):
 i, a, b = 0, 2, 7
 digit = 10
 ans = "0."
-
 while i < digit:
     a10 = a * 10
     ans = ans + str(a10 // b)
     a = a10 % b
+    i = i + 1
+print(ans)
+
+# 遇到整除就結束迴圈
+i, a, b = 0, 2, 7
+digit = 10
+ans = "0."
+while i < digit:   
+    a10 = a * 10  # a補0
+    ans = ans + str(a10 // b)  #20//7再轉換成字串
+    a = a10 % b  # 20除7取餘數
+    if a == 0:  # 如果整除了
+        break  # 結束迴圈
     i = i + 1
 print(ans)
 
@@ -115,12 +127,23 @@ ratio = incircle / total
 print("面積: ", 4 * ratio)
 
 5. 輸入密碼直到對為止(不確定次數)
-correct = "1234"
+correct = "1234"  # 密碼設定1234
 while True:
-    e = input("Enter: ")
-    if e == correct:
-        print("Finish")
-        break
+    e = input("Enter: ")  # 讓使用者輸入
+    if e == correct:  # 如果輸入的是正確的值
+        print("Finish")   # 印出Finish
+        break  # 結束迴圈
+
+6. 紙摺幾次會比101一樣高
+paper = 0.06  # 紙的厚度=0.06mm
+building = 509 * 100 * 10  # 101高度=509m
+count = 0
+while True:
+    paper = paper * 2  # 紙對摺厚度*2
+    count = count + 1  # 次數+1
+    if paper > building:  #如果紙的厚度比101大
+        print(paper, count)
+        break  # 結束迴圈
 ----------
 1. 迴圈(重複)
 a. 初始化記錄器: i = 0
