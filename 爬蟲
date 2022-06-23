@@ -1,0 +1,18 @@
+爬蟲: 讓程式幫你上網
+
+1. 找到隱藏網址
+f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完成的media) -> 找到第一個名稱開頭是video的
+
+1.5. 確認正確檔名
+Response Headers -> content-type: video/mp4
+
+2. 下載完整影片
+找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
+
+3. 下載完整聲音
+找到第二個名稱開頭是video的 -> 找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
+
+3.5. 確認正確檔名
+Response Headers -> content-type: audio/webm
+
+4. 選擇畫質
