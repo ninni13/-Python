@@ -144,6 +144,29 @@ while True:
     if paper > building:  #如果紙的厚度比101大
         print(paper, count)
         break  # 結束迴圈
+
+7. 終極密碼
+import random
+
+count, low, high = 0, 1, 100
+ans = random.randint(low+1, high-1)  # 在2~99內隨機生成正確答案
+while True:
+    print("請輸入", low, "~", high, "之間的數字: ")
+    guess = int(input())  # 使用者猜的數字
+    if guess < high and guess > low:  # 數字要在範圍內
+        count = count + 1  # 次數+1
+        if guess > ans:
+            print("猜太大啦><")
+            high = guess  # 上限變成使用者猜的數字
+        elif guess < ans: 
+            print("猜小惹")
+            low = guess  # 下限變成使用者猜的數字
+        else:
+            print("賓狗!!")
+            break  # 結束這回合遊戲
+    else:
+        print("超出範圍了")  # 顯示錯誤訊息
+print("猜了", count, "次才答對")
 ----------
 1. 迴圈(重複)
 a. 初始化記錄器: i = 0
