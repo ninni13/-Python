@@ -167,6 +167,34 @@ while True:
     else:
         print("超出範圍了")  # 顯示錯誤訊息
 print("猜了", count, "次才答對")
+
+8. 剪刀石頭布(先贏三把算贏)
+import random
+
+win, lose = 0, 0
+while True:
+    # -1:lose, 0:even, 1:win
+    result = random.randint(-1, 1)
+    print(result)
+    if result == -1:
+        lose = lose + 1
+    elif result == 1:
+        win = win + 1
+    if win == 3:
+        print("WIN")
+        break
+    elif lose == 3:
+        print("LOSE")
+        break
+
+9. 費氏數列
+i, n1, n2 = 0, 0, 1
+while i < 10:
+    new = n1 + n2  # new = 3
+    print(new)
+    # want: n1, n2 = 2, 3
+    n1, n2 = n2, new
+    i = i + 1
 ----------
 1. 迴圈(重複)
 a. 初始化記錄器: i = 0
