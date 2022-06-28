@@ -1,18 +1,47 @@
 爬蟲: 讓程式幫你上網
 
+# Youtube
 1. 找到隱藏網址
-f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完成的media) -> 找到第一個名稱開頭是video的
+f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完整的media) -> 找到第一個名稱開頭是video的(videoplayback)
 
-1.5. 確認正確檔名
+1.1 確認正確檔名
 Response Headers -> content-type: video/mp4
 
 2. 下載完整影片
-找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
+複製General裡第一個網址 -> 找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
 
 3. 下載完整聲音
-找到第二個名稱開頭是video的 -> 找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
+找到第二個名稱開頭是video的 -> 複製General裡第一個網址 -> 找到xxxx?參數=值&參數=值 -> 其中一段是&range=0-xxxx -> 刪除
 
-3.5. 確認正確檔名
+3.1 確認正確檔名
 Response Headers -> content-type: audio/webm
 
-4. 選擇畫質
+4. 轉檔 / 合併
+Windows:
+https://drive.google.com/file/d/1NG1jLgtNSMA8Gu_WKtfpa7a7sOsXoRiI/view?usp=sharing
+有圖形化介面，操作簡單
+ffmpeg / ffplay / ffprobe
+轉檔(下載的聲音檔轉成mp3): FFQueue -> add -> ... -> 選擇自己下載的檔案 -> Outputfile改副檔名 -> savejob -> start
+合併(將畫面及聲音檔合併):  addinputfile -> ... -> 選擇自己下載的檔案 -> 匯入的檔案每個都勾 -> Outputfile改副檔名 -> savejob -> start
+
+MAC:
+https://drive.google.com/file/d/1jeMX_L6j4iINj9f9pRXyddxeHPuLkQJu/view?usp=sharing
+優點: 免費影片編輯的工具，由全世界工程師維護，可以大量上字幕 / 浮水印 / 合併影片
+缺點: 沒有圖形化介面
+轉檔: 終端機 -> 將目的地資料夾拖曳到終端機 -> 將ffmpeg拖曳到終端機 -> 按空格再加上-i -> 按空格再加上聲音檔(拖曳到終端機) -> 按空格再加上檔名.mp3
+合併: ffmpeg -i 聲音 -i 影片 out.mp4
+
+執行檔案 參數-參數名稱 參數值
+cd 到
+~ 根目錄
+
+
+# 巴哈姆特動畫瘋
+1. 找到隱藏網址
+f12 -> network -> 上方選擇Fetch/XHR -> 找到chunklist_b400000(播放清單)
+danmuGet.php(彈幕)
+
+2. 下載完整影片
+複製General裡第一個網址 -> 打開終端機
+Windows: -headers "Origin: https://ani.gamer.com.tw" -i "" output.mp4(自己設定檔名) -> 引號內加入影片網址
+MAC: -headers 'Origin: https://ani.gamer.com.tw' -i '' output.mp4(自己設定檔名) -> 引號內加入影片網址
