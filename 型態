@@ -1,0 +1,41 @@
+# 例題練習
+1. 有幾個人及格
+scores = [20, 60, 80, 40]
+i, count = 0, 0
+while i < len(scores):
+    if scores[i] >= 60:
+        count = count + 1
+    i = i + 1
+print(count)
+----------
+# 基礎型態
+a. 數字
+b. 字串
+c. 布林
+d. 無(None)
+
+# 複雜型態
+a. list
+定義清單: [1, True, None] -> 可以放不同型態，但盡量不要
+查詢: 字串 / 清單[索引值]
+查詢: 清單[開始:結束(不包含)]
+example.
+scores = [10, 20, 30, 40]
+len(scores), sum(scores)  # 元素個數 / 元素加總
+max(scores), min(scores)  # 最大值 / 最小值
+40 in scores  # 是否有在list裡
+# 查詢單個
+scores[0], scores[-1] # 第一個元素 / 最後一個元素
+# 查詢一段
+scores[0:3] # scores[0]、scores[1]、scores[2]
+# 查詢一段(跳著取)
+scores[2:], scores[:2]  # 從2到最後 / 從頭到2
+scores[::2], scores[::-1]  # 從頭到尾跳著取 / 從最後倒回來取
+
+
+b. dict
+key-value
+0, 1, 2 -> 10, 20, 30
+
+查詢: 字串 / 清單[索引值]
+查詢: 清單[開始:結束(不包含)]
