@@ -28,10 +28,12 @@ max(scores), min(scores)  # 最大值 / 最小值
 scores[0], scores[-1] # 第一個元素 / 最後一個元素
 # 查詢一段
 scores[0:3] # scores[0]、scores[1]、scores[2]
-# 查詢一段(跳著取)
+# 查詢一段(跳號)
 scores[2:], scores[:2]  # 從2到最後 / 從頭到2
 scores[::2], scores[::-1]  # 從頭到尾跳著取 / 從最後倒回來取
-
+# 排序
+sorted(scores)[::-1]  # 大排到小
+sorted(scores, reverse=True)  # 大排到小
 
 b. dict
 key-value
