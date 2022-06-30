@@ -1,5 +1,15 @@
 爬蟲: 讓程式幫你上網
 
+# 爬蟲 SOP
+1. 打開原始碼(網址列的回覆)
+2. 需要的東西
+a. in 原始碼: 網址列
+b. not in 原始碼: F12 -> 在Network裡找
+JSON 格式 -> list + dict
+
+# google 好手氣(下載裡面的圖片)
+preview -> 
+
 # Youtube
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完整的media) -> 找到第一個名稱開頭是video的(videoplayback)
