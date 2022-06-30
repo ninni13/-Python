@@ -1,0 +1,12 @@
+
+----------
+# 迴圈 SOP
+1. 有群集型態: for 代號 in 群(str / list / dict / triple / ...)
+2. 固定次數: for i in range(次數)
+   但如果次數太大，RAM會爆炸，建議使用while(只儲存一個i的值)
+3. 不固定次數: while True + break
+
+# range(次數)
+range(5) -> [0, 1, 2, 3, 4]
+range(2, 5) -> [2, 3, 4]
+range(2, 11, 3) -> [2, 5, 8]
