@@ -1,0 +1,12 @@
+使用萬國碼(Unicode)裡的 utf-8
+
+# 寫入
+f = open("a.txt", "W", encoding="utf-8")  # 開檔, "W"是寫入模式
+f.write("abcd\n")  # \n: 換行
+f.close()  # 關檔
+
+# 讀取
+f = open("a.txt", "r", encoding="utf-8")  # 開檔
+s = f.read()  # 讀檔
+print(s)
+f.close()
