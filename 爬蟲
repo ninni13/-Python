@@ -20,7 +20,7 @@ response = req.urlopen(url)
 # 另一種寫法: pics = json.load(response)
 # 回應的是一種檔案類型: .read()
 r = response.read()
-pics = json.loads(r)
+pics = json.loads(r)  # 型態轉換
 
 for p in pics:  # p的型態是字典
     print(p["title"])
