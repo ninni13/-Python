@@ -9,8 +9,24 @@ JSON 格式 -> list + dict
 
 # google 好手氣(下載裡面的圖片)
 Python內建資料庫 -> urllib(資料夾) -> request.py
-1. urlopen(網址): 送出網址得到回覆
-2. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
+a. urlopen(網址): 送出網址得到回覆
+b. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
+1.
+import json
+import urllib.request as req  # 給函式庫一個簡短的寫法
+
+url = "https://www.google.com/doodles/json/2022/5?hl=zh-TW"
+response = req.urlopen(url)
+# 另一種寫法: pics = json.load(response)
+# 回應的是一種檔案類型: .read()
+r = response.read()
+pics = json.loads(r)
+
+for p in pics:  # p的型態是字典
+    print(p["title"])
+    imgurl = "https: " + p["high_res_url"]
+    print(imgurl)
+    print("-" * 30)
 
 # Youtube
 1. 找到隱藏網址
