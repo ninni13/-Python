@@ -1,11 +1,19 @@
 # 例題練習
 1. 有幾個人及格
+# use while
 scores = [20, 60, 80, 40]
 i, count = 0, 0
 while i < len(scores):
     if scores[i] >= 60:
         count = count + 1
     i = i + 1
+print(count)
+
+# use for
+scores = [20, 60, 80, 40]
+for sc in scores:
+    if sc >= 60:
+        count = count + 1
 print(count)
 ----------
 # 基礎型態
@@ -16,7 +24,7 @@ d. 無(None)
 
 # 複雜型態
 a. list
-定義清單: [1, True, None] -> 可以放不同型態，但盡量不要
+定義清單: p = [1, True, None] -> 可以放不同型態，但盡量不要
 查詢: 字串 / 清單[索引值]
 查詢: 清單[開始:結束(不包含)]
 example.
@@ -35,9 +43,10 @@ scores[::2], scores[::-1]  # 從頭到尾跳著取 / 從最後倒回來取
 sorted(scores)[::-1]  # 大排到小
 sorted(scores, reverse=True)  # 大排到小
 
-b. dict
-key-value
-0, 1, 2 -> 10, 20, 30
-
-查詢: 字串 / 清單[索引值]
-查詢: 清單[開始:結束(不包含)]
+b. dict(聚集小東西來變成一個複雜型態)
+定義清單: p = {key:value, "姓名":"ninni", "身高":158}
+key: 數字 / 字串
+查詢: 字典[key] -> p["姓名"]
+* 裡面元素沒有順序性
+p["key"] = value -> 增加元素
+del p["key"] -> 刪除元素
