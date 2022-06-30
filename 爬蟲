@@ -8,7 +8,9 @@ b. not in 原始碼: F12 -> 在Network裡找
 JSON 格式 -> list + dict
 
 # google 好手氣(下載裡面的圖片)
-preview -> 
+Python內建資料庫 -> urllib(資料夾) -> request.py
+1. urlopen(網址): 送出網址得到回覆
+2. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
 
 # Youtube
 1. 找到隱藏網址
