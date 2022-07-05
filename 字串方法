@@ -1,0 +1,21 @@
+# 專屬功能(Method): 對象.功能()
+# 普通功能(Function): 功能(對象)
+# 以前: read(f) -> f.read()
+# https://www.w3schools.com/python/python_strings_methods.asp
+s = "Hello" * 5
+print(s)
+# replace(oldvalue, newvalue, count)
+b = s.replace("Hello", "Bye")
+print(b)
+
+s = s.replace("Hello", " ", 2)
+print(s)
+
+# split(separator, maxsplit)
+date = "2022--07--05"
+ds = date.split("--")
+print(ds)
+# join()
+# 如果說split像是一把刀把字串切開，join就像是黏著劑把字串黏起來
+new = "/".join(ds)
+print(new)
