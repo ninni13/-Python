@@ -7,25 +7,46 @@ a. in 原始碼: 網址列
 b. not in 原始碼: F12 -> 在Network裡找
 JSON 格式 -> list + dict
 
+# 路徑
+1. 絕對路徑 -> C://xxxx/xxx/xxx
+2. 相對路徑(相對目前檔案的位置)
+a. 跟目前檔案同一個資料夾 -> xx.txt or ./xx.txt
+b. 在目前檔案的前一層資料夾
+../c.txt
+c. 在目前檔案的前兩層資料夾
+../../d.txt
+
+a(dir) -- b(dir)     ---- main.py
+d.txt  -- c.txt      ---- xx.txt
+
 # google 好手氣(下載裡面的圖片)
 Python內建資料庫 -> urllib(資料夾) -> request.py
 a. urlopen(網址): 送出網址得到回覆
 b. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
-1.
+
+import os  # 所有跟作業系統有關的函示庫
 import json
 import urllib.request as req  # 給函式庫一個簡短的寫法
+
+dn = "google"
+if not os.path.exists(dn):  # 如果這個資料夾不存在
+    os.makedirs(dn)  # 那就建立一個資料夾
 
 url = "https://www.google.com/doodles/json/2022/5?hl=zh-TW"
 response = req.urlopen(url)
 # 另一種寫法: pics = json.load(response)
 # 回應的是一種檔案類型: .read()
 r = response.read()
-pics = json.loads(r)  # 型態轉換
+pics = json.loads(r)
 
 for p in pics:  # p的型態是字典
     print(p["title"])
-    imgurl = "https: " + p["high_res_url"]
+    imgurl = "https:" + p["high_res_url"]
     print(imgurl)
+    # urlretrieve(網址, 下載路徑)
+    fn = imgurl.split("/")[-1]
+    totalfn = dn + "/" + fn
+    req.urlretrieve(imgurl, totalfn)
     print("-" * 30)
 
 # Youtube
