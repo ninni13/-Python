@@ -84,7 +84,6 @@ https://drive.google.com/file/d/1jeMX_L6j4iINj9f9pRXyddxeHPuLkQJu/view?usp=shari
 cd 到
 ~ 根目錄
 
-
 # 巴哈姆特動畫瘋
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR -> 找到chunklist_b400000(播放清單)
@@ -94,3 +93,10 @@ danmuGet.php(彈幕)
 複製General裡第一個網址 -> 打開終端機
 Windows: -headers "Origin: https://ani.gamer.com.tw" -i "" output.mp4(自己設定檔名) -> 引號內加入影片網址
 MAC: -headers 'Origin: https://ani.gamer.com.tw' -i '' output.mp4(自己設定檔名) -> 引號內加入影片網址
+
+# tabelog
+1. 打開原始碼確定有沒有想要的網址，如果沒有就打開f12找
+
+2.
+
+f12 -> 
