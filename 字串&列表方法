@@ -1,3 +1,5 @@
+# string method
+
 # 專屬功能(Method): 對象.功能()
 # 普通功能(Function): 功能(對象)
 # 以前: read(f) -> f.read()
@@ -19,3 +21,18 @@ print(ds)
 # 如果說split像是一把刀把字串切開，join就像是黏著劑把字串黏起來
 new = "/".join(ds)
 print(new)
+
+# list method
+
+# 概念
+1. 有的功能是直接改, 不用=也會改值
+2. 所有功能都有回傳值, 只是有些功能的回傳值是None
+
+# 專屬功能
+1. str專屬功能: b = a.replace  a: old  b: new
+2. list專屬功能: b = a.append  a: new  b: None
+
+分辨方法:
+1. 看文件
+2. (!)接接看，如果你接到None就是第二種
+3. (!)紅字: None type is ...，就代表你把第二種當成第一種在用
