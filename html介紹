@@ -1,0 +1,30 @@
+HTML格式: 區塊(長方形)
+<名字 屬姓名="值" 屬姓名="值"> start
+	文字
+</名字> end
+
+<a href="連到網址">
+	Sugita
+</a>
+1.名字: 決定是什麼東西  a:超連結 img:圖片 video: 影片
+2.屬性: 決定不一樣的地方 a->href="url" img/video->src="url"
+3.內容: 決定顯示什麼文字
+
+HTML(網頁內容) 1. CSS(網頁排版)!!!  2. JavaScript(網頁動態)
+
+CSS語法: 定位元素並加上排版
+
+0. 名字
+a{
+	background-color:red;
+	xxxx:xxxx;
+}
+
+# 兩個特殊屬性 
+1. 分類 class="分類1 分類2"
+<a class="xyz">
+你可以寫  .xyz{}
+
+2. 身分證 id="值"
+<a id="bcdef"
+你可以寫  #bcdef{}
