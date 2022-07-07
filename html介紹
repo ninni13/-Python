@@ -28,3 +28,10 @@ a{
 2. 身分證 id="值"
 <a id="bcdef"
 你可以寫  #bcdef{}
+
+# HTTP代碼:
+2(成功): 200
+3(轉址)
+4(錯誤):
+400(Bad Request)
+404(Not Found)
