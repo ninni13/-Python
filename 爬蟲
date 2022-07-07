@@ -94,9 +94,33 @@ danmuGet.php(彈幕)
 Windows: -headers "Origin: https://ani.gamer.com.tw" -i "" output.mp4(自己設定檔名) -> 引號內加入影片網址
 MAC: -headers 'Origin: https://ani.gamer.com.tw' -i '' output.mp4(自己設定檔名) -> 引號內加入影片網址
 
-# tabelog
-1. 打開原始碼確定有沒有想要的網址，如果沒有就打開f12找
-
-2.
-
-f12 -> 
+# tabelog 以此網址為例: https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt
+請列印出商家中文名稱、日文名稱、菜的類別、評分、午餐價格、晚餐價格、網址
+# from 基準點 import .py
+from urllib.request import urlopen  # 只import需要用到的功能 
+# 可讀性比較好
+from bs4 import BeautifulSoup
+url = "https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt"
+response = urlopen(url)
+html = BeautifulSoup(response)  # 型態轉換 # 出現紅字不用緊張只是warning不是error
+# 區塊.find/find_all(區塊html名字, 篩選條件class/id)
+rs = html.find_all("li", {"class":"list-rst"})
+# rs: [li, li, li, ...]
+for r in rs:
+    # r: 一個li區塊
+    en = r.find("a", {"class":"list-rst__name-main"})
+    ja = r.find("small", {"class":"list-rst__name-ja"})
+    rtype = r.find("li", {"class":"list-rst__catg"})
+    rating = r.find("b", {"class":"c-rating__val"})
+    price = r.find_all("span", {"class":"c-rating__val"})
+    # 型態擁有兩種東西: 1. 專屬功能 2. 專屬值 型態.值
+    # html內容(專屬值的拿法): 區塊.text
+    # html屬性(href): 區塊["href"]
+    print(en.text)  # 中文名字
+    print(ja.text)  # 日文名字
+    print(rtype.text)  # 菜的類別
+    print(rating.text)  # 評分
+    print("午餐:", price[0].text)  # 午餐價格
+    print("晚餐:", price[1].text)  # 晚餐價格
+    print(en["href"])  # 網址
+    print("-" * 30)
