@@ -21,3 +21,9 @@ except Error1:
 except Error2:
 	sol1
 	sol2
+	
+1. 順順執行
+2. if line1發生錯誤 -> stop try
+跳到except
+a. 如果有準備對應Error: 做
+b. 如果沒有: 出現紅字
