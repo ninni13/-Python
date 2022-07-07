@@ -19,7 +19,14 @@ c. 在目前檔案的前兩層資料夾
 a(dir) -- b(dir)     ---- main.py
 d.txt  -- c.txt      ---- xx.txt
 
-# google 好手氣(下載裡面的圖片)
+# pandas函式庫
+CSV/TSV(Comma-Separated Values)/(TAB...)
+姓名, 身高\n
+Elwing, 175\n
+"Elwing, Mr. Chou", 180
+
+# 例題練習
+1. google 好手氣(下載裡面的圖片)
 Python內建資料庫 -> urllib(資料夾) -> request.py
 a. urlopen(網址): 送出網址得到回覆
 b. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
@@ -49,7 +56,7 @@ for p in pics:  # p的型態是字典
     req.urlretrieve(imgurl, totalfn)
     print("-" * 30)
 
-# Youtube
+2. Youtube
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完整的media) -> 找到第一個名稱開頭是video的(videoplayback)
 
@@ -84,7 +91,7 @@ https://drive.google.com/file/d/1jeMX_L6j4iINj9f9pRXyddxeHPuLkQJu/view?usp=shari
 cd 到
 ~ 根目錄
 
-# 巴哈姆特動畫瘋
+3. 巴哈姆特動畫瘋
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR -> 找到chunklist_b400000(播放清單)
 danmuGet.php(彈幕)
@@ -94,7 +101,7 @@ danmuGet.php(彈幕)
 Windows: -headers "Origin: https://ani.gamer.com.tw" -i "" output.mp4(自己設定檔名) -> 引號內加入影片網址
 MAC: -headers 'Origin: https://ani.gamer.com.tw' -i '' output.mp4(自己設定檔名) -> 引號內加入影片網址
 
-# tabelog 以此網址為例: https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt
+4. tabelog 以此網址為例: https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt
 請列印出商家中文名稱、日文名稱、菜的類別、評分、午餐價格、晚餐價格、網址
 # from 基準點 import .py
 from urllib.request import urlopen  # 只import需要用到的功能 
