@@ -10,3 +10,14 @@ f = open("a.txt", "r", encoding="utf-8")  # 開檔
 s = f.read()  # 讀檔
 print(s)
 f.close()
+
+# 事前預防(if-else) & 事後處理(try-except)
+try:
+	line1
+	line2
+except Error1:
+	sol1
+	sol2
+except Error2:
+	sol1
+	sol2
