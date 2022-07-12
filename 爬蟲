@@ -26,7 +26,7 @@ Elwing, 175\n
 "Elwing, Mr. Chou", 180
 
 # 例題練習
-1. google 好手氣(下載裡面的圖片)
+#1 google 好手氣(下載裡面的圖片)
 Python內建資料庫 -> urllib(資料夾) -> request.py
 a. urlopen(網址): 送出網址得到回覆
 b. urlretrieve(網址, 指定下載位址): 送出網址得到回覆，回覆下載到指定位址
@@ -56,7 +56,7 @@ for p in pics:  # p的型態是字典
     req.urlretrieve(imgurl, totalfn)
     print("-" * 30)
 
-2. Youtube
+#2 Youtube(不會爬蟲)
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR(youtube上是串流影片，影片被分割成一塊一塊，不能算是完整的media) -> 找到第一個名稱開頭是video的(videoplayback)
 
@@ -91,7 +91,7 @@ https://drive.google.com/file/d/1jeMX_L6j4iINj9f9pRXyddxeHPuLkQJu/view?usp=shari
 cd 到
 ~ 根目錄
 
-3. 巴哈姆特動畫瘋
+#3 巴哈姆特動畫瘋(不算爬蟲)
 1. 找到隱藏網址
 f12 -> network -> 上方選擇Fetch/XHR -> 找到chunklist_b400000(播放清單)
 danmuGet.php(彈幕)
@@ -101,7 +101,7 @@ danmuGet.php(彈幕)
 Windows: -headers "Origin: https://ani.gamer.com.tw" -i "" output.mp4(自己設定檔名) -> 引號內加入影片網址
 MAC: -headers 'Origin: https://ani.gamer.com.tw' -i '' output.mp4(自己設定檔名) -> 引號內加入影片網址
 
-4. tabelog 以此網址為例: https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt
+#4 tabelog 以此網址為例: https://tabelog.com/tw/tokyo/rstLst/?SrtT=rt
 請列印出商家中文名稱、日文名稱、菜的類別、評分、午餐價格、晚餐價格、網址
 # from 基準點 import .py
 from urllib.request import urlopen  # 只import需要用到的功能 
@@ -130,4 +130,105 @@ for r in rs:
     print("午餐:", price[0].text)  # 午餐價格
     print("晚餐:", price[1].text)  # 晚餐價格
     print(en["href"])  # 網址
+    print("-" * 30)
+    
+#5 PTT(https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html)
+1. 出現紅字
+如果出現 HTTP error: 403 有兩種可能
+a. ip-ban   
+b. 送出的請求跟瀏覽器不一樣(Headers)
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+html = BeautifulSoup(response.text)
+print(html)
+
+2.
+from urllib.request import urlopen, Request
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+req = Request(url)
+req.add_header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36")
+# 有些網站不會檢查這麼嚴，可以打 "Mozilla/5.0" 就好
+req.add_header("cookie", "over18=1")
+response = urlopen(req)
+html = BeautifulSoup(response)
+print(html)
+
+3. 改import requests函式庫()
+a. 使用方式比較好用 
+b. 已經幫你加上基本headers user-agent: Mozilla 5.0(如果遇到403你就要加滿)
+一開始不教是因為如果遇到HTTP error: 403會不知道是Headers的問題
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+# 以下兩行擇一
+response = requests.get(url, headers={"cookie":"over18=1", "user-agent": "Mozilla/5.0"})
+response = requests.get(url, cookies={"over18":"1"})
+html = BeautifulSoup(response.text)
+print(html)
+
+4.
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+response = requests.get(url, cookies={"over18":"1"})
+html = BeautifulSoup(response.text)
+links = html.find_all("a")
+for link in links:
+    print(href.split(".")[-1])
+    sub = href.split(".")[-1])  # 取list中最後一個元素
+
+5. 尋找要下載的圖片
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+    
+response = requests.get(url, cookies={"over18":"1"})
+html = BeautifulSoup(response.text)
+
+links = html.find_all("a")
+for link in links:
+    href = link["href"]
+    sub = href.split(".")[-1]
+    if sub.lower() in allows:
+        print("download:", href)
+    print("-" * 30)
+
+6. 下載圖片
+import os
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+dn = "ptt/" + url.split("/")[-1]  # 資料夾檔名
+if not os.path.exists(dn):  # 如果沒有這個資料夾就創建一個
+    os.makedirs(dn)
+    
+response = requests.get(url, cookies={"over18":"1"})
+html = BeautifulSoup(response.text)
+
+allows = ["jpg", "jpeg", "png", "gif"]  # 允許的副檔名
+links = html.find_all("a")
+for link in links:
+    href = link["href"]
+    sub = href.split(".")[-1]
+    if sub.lower() in allows:
+        print("download:", href)
+        # 如果是純文字直接用 response.text
+        # 如果不是純文字(檔案)要帶入 stream=True 用 response.raw(檔案型態).read()
+        response = requests.get(href, stream=True)  
+        # 自己做存檔
+        fp = dn + "/" + href.split("/")[-1]  # 做檔名跟副檔名
+        # 純文字: open(檔名, "r"/"w", encoding="utf-8")
+        # others: open(檔名, "rb"/"wb")
+        f = open(fp, "wb")
+        f.write(response.raw.read())  # 把裡面的內容讀出來寫入新檔案
+        f.close()
     print("-" * 30)
