@@ -247,3 +247,21 @@ for link in links:
         f.write(response.raw.read())  # 把裡面的內容讀出來寫入新檔案
         f.close()
     print("-" * 30)
+
+#6 facebook(認識Get / POST)
+登入錯的帳密(12345@gmail.com / abcd1234) -> F12 -> 第一個(?privacy開頭) -> Request URL -> 可以看到網址中少了帳號密碼
+不是所有東西都可以放在網址上(帳號密碼)，要寫在一個秘密小紙條上，也可以發現Request Method: POST(正常會是GET)
+GET: 沒有秘密(url、headers)
+POST: 有秘密(url、headers、payload)
+Payload -> Form Data -> encpass告訴你facebook真的沒有存你的帳號密碼
+
+#7 CitiOrange公民報橘(https://buzzorange.com/citiorange/latest/)(換頁時最上面的網址不會換，像doodles)
+點Load more news -> F12 -> General -> 可以看到網址中少了第幾頁，代表頁數被寫在秘密小紙條，並且Request Method: POST，驗證真的有秘密小紙條 -> 
+Payload -> Form Data -> postOffset: 12(一頁12筆) -> securityCheck: 54f38af560(每天長得不一樣)
+
+#8 Selenium
+要有瀏覽器，所以不能使用線上環境 -> 有指令介面driver(跟python無關) -> 要有python library(Selenium)
+1. 裝driver
+先確認chrome版本 -> 三個點 -> 關於Chrome -> search:chrome driver -> 選第一個(ChromeDriver - WebDriver for Chrome) -> 根據自己的版本(Latest stable release: ChromeDriver 103.0.5060.53) -> 選擇自己電腦的型號
+
+2. 開啟專案
