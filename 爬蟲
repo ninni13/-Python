@@ -133,32 +133,48 @@ for r in rs:
     print("-" * 30)
     
 #5 PTT(https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html)
-1. 出現紅字
-如果出現 HTTP error: 403 有兩種可能
-a. ip-ban   
-b. 送出的請求跟瀏覽器不一樣(Headers)
+1. 確認是否需要找隱藏網址: 右鍵檢查原始碼 -> 裡面已經有需要的圖片網址，就不需要找隱藏網址
 
+2. 出現紅字
+如果出現 HTTP Error: 403 有兩種可能
+a. IP被封鎖
+b. 送出的請求跟瀏覽器不一樣(Headers)
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
 
 url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
-html = BeautifulSoup(response.text)
-print(html)
+response = urlopen(url)
+從Headers -> Request Headers -> referer可以得知你是從哪個網站過來的
+從Headers -> Request Headers -> user-agent可以知道你的瀏覽器版本
 
-2.
+3. 送出完整的請求(網址、Headers)
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 
 url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
 req = Request(url)
-req.add_header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36")
+req.add_header("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36")
+response = urlopen(req)
+html = BeautifulSoup(response)
+print(html)
+會發現不是顯示預期的網站，而是問你是否已滿18歲
+
+4. 把cookie帶進去(已滿18)
+網址送出去給伺服器時在General顯示Status Code: 302(轉址)，被轉到問你是否滿18歲的網址，按下已滿18會把https://www.ptt.cc/ask/over18送出，再被轉址成正確網址
+F12 -> over18 -> Response Headers會多一個set-cookie: over18=1; Path=/，代表之後再進去這個網址就不會被問問題，瀏覽器已經記住這個cookie了
+*cookie: 當你做過一次操作後，某些值會被存在瀏覽器，再拜訪網站時這些值會被自動送出去(像是記住帳號密碼、自動登入)
+from urllib.request import urlopen, Request
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+req = Request(url)
+req.add_header("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36")
 # 有些網站不會檢查這麼嚴，可以打 "Mozilla/5.0" 就好
 req.add_header("cookie", "over18=1")
 response = urlopen(req)
 html = BeautifulSoup(response)
 print(html)
 
-3. 改import requests函式庫()
+4. 改import requests函式庫()
 a. 使用方式比較好用 
 b. 已經幫你加上基本headers user-agent: Mozilla 5.0(如果遇到403你就要加滿)
 一開始不教是因為如果遇到HTTP error: 403會不知道是Headers的問題
