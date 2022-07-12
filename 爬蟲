@@ -174,50 +174,49 @@ response = urlopen(req)
 html = BeautifulSoup(response)
 print(html)
 
-4. 改import requests函式庫()
-a. 使用方式比較好用 
-b. 已經幫你加上基本headers user-agent: Mozilla 5.0(如果遇到403你就要加滿)
+5. 改import requests函式庫()
+a. 使用方式(API)比較好用
+b. 已經幫你加上基本Headers -> user-agent: Mozilla 5.0(如果遇到403你就要加滿)
 一開始不教是因為如果遇到HTTP error: 403會不知道是Headers的問題
 import requests
 from bs4 import BeautifulSoup
 
 url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
+response = requests.get(url)  # 代替urlopen，也不能直接丟到BeautifulSoup
+html = BeautifulSoup(response.text)
+print(html)
+
+6. 帶入cookie(已滿18)
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
 # 以下兩行擇一
-response = requests.get(url, headers={"cookie":"over18=1", "user-agent": "Mozilla/5.0"})
+response = requests.get(url, headers={"cookie":"over18=1"})  # 代替urlopen，也不能直接丟到BeautifulSoup
+# 如果遇到403還是要加滿
+# response = requests.get(url, headers={"cookie":"over18=1", "user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"})
 response = requests.get(url, cookies={"over18":"1"})
 html = BeautifulSoup(response.text)
 print(html)
 
-4.
+7. 找到要下載的圖片網址
 import requests
 from bs4 import BeautifulSoup
 
 url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
 response = requests.get(url, cookies={"over18":"1"})
 html = BeautifulSoup(response.text)
-links = html.find_all("a")
-for link in links:
-    print(href.split(".")[-1])
-    sub = href.split(".")[-1])  # 取list中最後一個元素
 
-5. 尋找要下載的圖片
-import requests
-from bs4 import BeautifulSoup
-
-url = "https://www.ptt.cc/bbs/Beauty/M.1657591280.A.355.html"
-    
-response = requests.get(url, cookies={"over18":"1"})
-html = BeautifulSoup(response.text)
-
+allows = ["jpg", "jpeg", "png", "gif"]  # 被允許的副檔名
 links = html.find_all("a")
 for link in links:
     href = link["href"]
-    sub = href.split(".")[-1]
-    if sub.lower() in allows:
+    sub = href.split(".")[-1]  # 取list中最後一個元素，也就是副檔名
+    if sub.lower() in allows:  # 讓所有字母變成小寫
         print("download:", href)
-    print("-" * 30)
+    print("-" * 30)    
 
-6. 下載圖片
+8. 下載圖片
 import os
 import requests
 from bs4 import BeautifulSoup
@@ -230,7 +229,7 @@ if not os.path.exists(dn):  # 如果沒有這個資料夾就創建一個
 response = requests.get(url, cookies={"over18":"1"})
 html = BeautifulSoup(response.text)
 
-allows = ["jpg", "jpeg", "png", "gif"]  # 允許的副檔名
+allows = ["jpg", "jpeg", "png", "gif"]
 links = html.find_all("a")
 for link in links:
     href = link["href"]
